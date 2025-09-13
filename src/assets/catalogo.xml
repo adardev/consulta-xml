@@ -1,0 +1,12 @@
+<catalogo>
+    <producto>
+        <id>1</id>
+        <nombre>Laptop</nombre>
+        <precio>200</precio>
+    </producto>
+    <producto>
+        <id>2</id>
+        <nombre>Celular</nombre>
+        <precio>200</precio>
+    </producto>
+</catalogo>
