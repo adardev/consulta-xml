@@ -24,72 +24,31 @@ export class Productos {
     }
     private parseXML(xmlString: string): Producto[] {
         try {
-<<<<<<< HEAD
             const parser = new DOMParser();
             const xml = parser.parseFromString(xmlString, 'text/xml');
-=======
-            console.log('🔍 Iniciando parsing de XML...');
-            const parser = new DOMParser();
-            const xml = parser.parseFromString(xmlString, 'text/xml');
-
-            // Check for parsing errors
->>>>>>> 756df3cfb9abb3e7e7bf6a24f80a4fb02ed778e5
             const parseError = xml.querySelector('parsererror');
             if (parseError) {
                 throw new Error('XML parsing error: ' + parseError.textContent);
             }
-<<<<<<< HEAD
             const productos: Producto[] = [];
             const nodes = xml.getElementsByTagName('producto');
-            for (let i = 0; i < nodes.length; i++) {
-                const node = nodes[i];
-                const idElement = node.getElementsByTagName('id')[0];
-                const nombreElement = node.getElementsByTagName('nombre')[0];
-                const precioElement = node.getElementsByTagName('precio')[0];
-=======
-
-            const productos: Producto[] = [];
-            const nodes = xml.getElementsByTagName('producto');
-            console.log('📦 Nodos <producto> encontrados:', nodes.length);
-
             for (let i = 0; i < nodes.length; i++) {
                 const node = nodes[i];
                 console.log(`🔍 Procesando producto ${i + 1}:`);
-
                 const idElement = node.getElementsByTagName('id')[0];
                 const nombreElement = node.getElementsByTagName('nombre')[0];
                 const precioElement = node.getElementsByTagName('precio')[0];
-
-                console.log('  📋 idElement:', idElement?.textContent);
-                console.log('  📋 nombreElement:', nombreElement?.textContent);
-                console.log('  📋 precioElement:', precioElement?.textContent);
-
->>>>>>> 756df3cfb9abb3e7e7bf6a24f80a4fb02ed778e5
                 if (idElement && nombreElement && precioElement) {
                     const producto = {
                         id: Number(idElement.textContent?.trim()),
                         nombre: String(nombreElement.textContent?.trim()),
                         precio: Number(precioElement.textContent?.trim())
                     };
-<<<<<<< HEAD
                     productos.push(producto);
                 }
             }
             return productos;
         } catch (error) {
-=======
-                    console.log('  ✅ Producto creado:', producto);
-                    productos.push(producto);
-                } else {
-                    console.log('  ❌ Faltan elementos en este producto');
-                }
-            }
-
-            console.log('🎯 Productos finales parseados:', productos);
-            return productos;
-        } catch (error) {
-            console.error('❌ Error en parseXML:', error);
->>>>>>> 756df3cfb9abb3e7e7bf6a24f80a4fb02ed778e5
             return [];
         }
     }
